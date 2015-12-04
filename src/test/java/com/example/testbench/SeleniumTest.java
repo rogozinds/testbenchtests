@@ -24,38 +24,25 @@ public class SeleniumTest extends TestCase {
         UIUrl = "http://localhost:8080/example";
         driver = new FirefoxDriver();
     }
-
     @Test
     public void testWithoutTestbench() {
         driver.get(UIUrl);
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        WebElement button = findButtonByCaption("Click");
+        final WebElement button = findButtonByCaption("Click");
         button.click();
-        List<WebElement> elements = driver.findElements(By.id("labelid"));
+        final List<WebElement> elements = driver.findElements(By.id("labelid"));
         if (elements.isEmpty()) {
             throw new RuntimeException("No Labelfound");
         }
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        String value = elements.get(0).getText();
+        final String value = elements.get(0).getText();
         Assert.assertEquals("Clicked", value);
     }
-
     public WebElement findButtonByCaption(String caption) {
-        List<WebElement> buttons = driver
+        final List<WebElement> buttons = driver
                 .findElements(By.className("v-button"));
-        for (WebElement button : buttons) {
-            if (button.getText().equals(caption)) {
-                return button;
-            }
-        }
-        return null;
-    }
-
-    public WebElement findButtonByCaption(WebElement parent, String caption) {
-        List<WebElement> buttons = parent
-                .findElements(By.className("v-button"));
-        for (WebElement button : buttons) {
+        for (final WebElement button : buttons) {
             if (button.getText().equals(caption)) {
                 return button;
             }
