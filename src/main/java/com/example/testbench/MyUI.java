@@ -38,6 +38,9 @@ public class MyUI extends UI {
         setContent(layout);
         layout.addComponent(btn);
         layout.addComponent(label);
+
+        btn.setWidth("-1");
+        label.setValue("foo" + btn.getWidth() + btn.getWidthUnits());
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

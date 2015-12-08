@@ -17,8 +17,8 @@ public class TestbenchTest extends ParallelTest {
     public void testClick() {
         getDriver().get(baseUrl + "?restartApplication");
         ButtonElement button = $(ButtonElement.class).caption("Click").first();
-        LabelElement label = $(LabelElement.class).first();
         button.click();
+        LabelElement label = $(LabelElement.class).first();
         Assert.assertEquals(label.getText(), "Clicked");
     }
 }
